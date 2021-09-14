@@ -15,6 +15,10 @@ class CreateProductsTable extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->text('description')->nullable();
+            $table->unsignedBigInteger('historical_lowest_id')->nullable();
+            $table->unsignedBigInteger('current_lowest_id')->nullable();
             $table->timestamps();
         });
     }

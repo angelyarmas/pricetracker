@@ -15,6 +15,11 @@ class CreateStoresTable extends Migration
     {
         Schema::create('stores', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->string('domain');
+            $table->string('default_normal_price_regex')->nullable();
+            $table->string('default_discounted_price_regex')->nullable();
+            $table->string('default_special_price_regex')->nullable();
             $table->timestamps();
         });
     }

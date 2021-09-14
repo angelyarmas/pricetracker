@@ -15,6 +15,9 @@ class CreateMediaTable extends Migration
     {
         Schema::create('media', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('product_id')->nullable();
+            $table->text('path');
+            $table->string('type');
             $table->timestamps();
         });
     }

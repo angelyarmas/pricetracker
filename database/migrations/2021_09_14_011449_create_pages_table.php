@@ -15,6 +15,16 @@ class CreatePagesTable extends Migration
     {
         Schema::create('pages', function (Blueprint $table) {
             $table->id();
+            $table->string('url');
+            $table->unsignedBigInteger('store_id');
+            $table->unsignedBigInteger('product_id');
+            $table->unsignedBigInteger('currency_id');
+            $table->boolean('track')->default(true);
+            $table->unsignedTinyInteger('scrapping_retries')->default(0);
+            $table->string('page_normal_price_regex')->nullable();
+            $table->string('page_discounted_price_regex')->nullable();
+            $table->string('page_special_price_regex')->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }
