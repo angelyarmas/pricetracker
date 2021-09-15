@@ -2,6 +2,7 @@
 
 namespace App\Jobs;
 
+use App\Events\PriceSaved;
 use App\Models\Page;
 use App\Models\Price;
 use Illuminate\Bus\Queueable;
@@ -75,6 +76,10 @@ class TrackPage implements ShouldQueue
         $price->lowest_price = !empty($all_prices) ? min($all_prices) : null;
         $price->save();
 
+        // Dispatch event for price saved.
+        PriceSaved::dispatch($price);
+
+        // Return price created
         return $price;
     }
 
@@ -95,6 +100,6 @@ class TrackPage implements ShouldQueue
                 break;
         }
 
-        return $numeric_value;
+        return floatval($numeric_value);
     }
 }

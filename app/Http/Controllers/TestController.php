@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Page;
+use App\Models\Price;
 use Illuminate\Http\Request;
 use Nesk\Puphpeteer\Puppeteer;
 use Nesk\Rialto\Data\JsFunction;
@@ -11,8 +12,8 @@ class TestController extends Controller
 {
     public function testroute(Request $request)
     {
-        $page = Page::find(1);
-        return $page->currency;
+        $price = Price::find(2);
+        return $price->product->historical_lowest_price;
 
         // $url = 'https://simple.ripley.com.pe/seagate-barracuda-disco-duro-interno-hdd-para-computadoras-portatiles-de-escritorio-embalaje-sin-frustracion-pmp00000980881?color80_fijo=negro&s=o';
         // $puppeteer = new Puppeteer;
