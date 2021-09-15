@@ -12,8 +12,8 @@ class TestController extends Controller
 {
     public function testroute(Request $request)
     {
-        $price = Price::find(2);
-        return $price->product->historical_lowest_price;
+        $price = Price::find(4);
+        return $price;
 
         // $url = 'https://simple.ripley.com.pe/seagate-barracuda-disco-duro-interno-hdd-para-computadoras-portatiles-de-escritorio-embalaje-sin-frustracion-pmp00000980881?color80_fijo=negro&s=o';
         // $puppeteer = new Puppeteer;
