@@ -21,9 +21,9 @@ class CreatePagesTable extends Migration
             $table->unsignedBigInteger('currency_id');
             $table->boolean('track')->default(true);
             $table->unsignedTinyInteger('scrapping_retries')->default(0);
-            $table->string('page_normal_price_regex')->nullable();
-            $table->string('page_discounted_price_regex')->nullable();
-            $table->string('page_special_price_regex')->nullable();
+            $table->string('normal_price_regex')->nullable();
+            $table->string('discounted_price_regex')->nullable();
+            $table->string('special_price_regex')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });

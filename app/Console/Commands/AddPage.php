@@ -45,25 +45,25 @@ class AddPage extends Command
 
         // Select the Store
         if (Store::where('domain', parse_url($url, PHP_URL_HOST))->count() > 0) {
-            $store_id = Store::where('domain', parse_url($url, PHP_URL_HOST))->first()->get('id');
+            $store_id = Store::where('domain', parse_url($url, PHP_URL_HOST))->first()->id;
         } else {
             $store_search = $this->anticipate('What is the Store?', function ($input) {
                 return Store::where('domain', 'like', '%'.$input.'%')->pluck('domain')->toArray();
             });
-            $store_id = Store::where('domain', $store_search)->first()->get('id');
+            $store_id = Store::where('domain', $store_search)->first()->id;
         }
 
         // Select the Product
         $product_search = $this->anticipate('What is the Product?', function ($input) {
             return Product::where('name', 'like', '%'.$input.'%')->pluck('name')->toArray();
         });
-        $product_id = Product::where('name', $product_search)->first()->get('id');
+        $product_id = Product::where('name', $product_search)->first()->id;
 
         // Select the Currency
         $currency_search = $this->anticipate('What is the Currency?', function ($input) {
             return Currency::where('short_name', 'like', '%'. strtoupper($input))->pluck('short_name')->toArray();
         });
-        $currency_id = Currency::where('name', $currency_search)->first()->get('id');
+        $currency_id = Currency::where('short_name', $currency_search)->first()->id;
 
         // Save the page into the Database
         if ($this->confirm('Do you want to create the page?', true)) {

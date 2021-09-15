@@ -40,11 +40,17 @@ class AddStore extends Command
     {
         $name = $this->ask('What is the store name?');
         $domain = $this->ask('What is the store domain?');
+        $default_normal_price_regex = $this->ask('Input the normal price regex');
+        $default_discounted_price_regex = $this->ask('Input the discounted price regex');
+        $default_special_price_regex = $this->ask('Input the special price regex');
 
         if ($this->confirm(sprintf('Do you want to create the store: %s?', $name) , true)) {
             $store = new Store();
             $store->name = $name;
             $store->domain = $domain;
+            $store->default_normal_price_regex = $default_normal_price_regex;
+            $store->default_discounted_price_regex = $default_discounted_price_regex;
+            $store->default_special_price_regex = $default_special_price_regex;
 
             $store->save();
             $this->info(sprintf('Store «%s» created!', $name));
